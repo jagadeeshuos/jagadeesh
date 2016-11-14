@@ -1,0 +1,187 @@
+COMPARITIVE ANALYSIS OF DISTANCE VECTOR ROUTING PROTOCOL AND LINK STATE ROUTING PROTOCOL IN MESH TOPOLOGY
+
+                                         Jagadeesh Penumacha Venkatamuni
+                                                      University of Salford
+                                     Email id:  Jagadeesh435@gmail.com
+
+
+ 
+ABSTRACT: Now a days there are many routing protocols are used in local area networks and wide area networks. Depending up on the network size and network topology we use, it is taken in to consideration for choosing an appropriate routing protocol. Local area network may be in Small, Medium, and Large in size, depending upon the network topology. In this paper DVR protocol and LSR protocols are compared in Mesh topology with small, medium, large size networks in order to know about which protocols is best suitable for the size of the network we use and if there is any link failure between any two node or more, how much time it takes to recover from the failure link between any two nodes and choosing an alternate path and time taken to discover its neighboring routers interfaces and time taken to update its routing table are compared with no failure and failure scenarios in this paper.
+Keywords: routing information protocol, link state routing protocol. 
+1.	INTRODUCTION:
+In today’s internet world there are different network protocols that are used in different network sizes. Nowadays there are many protocols used in network layer. Choosing right protocol depends upon size of the network used. In network communication, routing protocols plays an important role in design and performance of the network, they determine the best routes for transfer of data and communication between nodes in the network. Routing protocols could be static or dynamic protocols, distance vector protocols and link state protocols are examples of dynamic routing protocols and these protocols uses algorithm that uses different metrics for data transferring. In distance vector routing protocols, the routers only have information about its next hop while the link state routers have a complete map of its network topology. 
+In order to determine the best routing protocol between distance vector and link state protocols, simulation’s would be performed under the Mesh topology with small, medium, large network sizes using OPNET software with their results been analyzed and compared. These networks are tested on two scenarios with no failure and failure in the network. To know more about failure and recovery time in different network topologies, 100seconds is set as failure point to all networks and recovery point is set from 110, 120, 130, 140, 150, 160, 170, 180, 190, 200seconds.In each network topology network convergence activity and network convergence duration results are taken in order to know about the time taken to converge the network and recovery time from failure. The most important part of designing a network is how faster can a network recover from its failure and recover the network in topology changes. This paper is on analyzing the convergence time of the network with different sizes in mesh topology. When certain faults are introduced and comparing how fast the network converges on the new topology using Rip and OSPF routing protocols using a simulator. These networks are designed in Opnet modeler software to know about which protocol is suitable for particular network depending upon results obtained. 
+ 2. BACKGROUND
+ROUTING PROTOCOL: 
+Routing protocols are used in network layer in OSI model. Routing protocol plays important role in selecting best path for choosing best path for transmitting packets to destination. These protocols learn routes that are available in the network and make routing decisions.  Static and dynamic routing protocols are used in networks. Static routing is used for small local area networks; this protocol is configured by network administrator. This protocol can’t expand its network size automatically. So, if there are any additional routers or failed router network administrator has to configure and updates it routing information. Dynamic routing protocols are used to overcome the problems faced in static routing protocol. 
+DYNAMIC ROUTING PROTOCOL:
+Dynamic routing protocol learns about the network topology by exchanging their source of information with directly connected routers and updates its routing table. Each router using dynamic routing protocol maintains their presence by sending updates to directly connected routers. If there is any additional routers are added, it updates its routing table and inform to connected routers in the network, in this way it can expand their network size bigger. If there is any link failure in the network it selects the best path for routing packets in the network. By using this protocol administrative work is reduced. This is normally used in medium and large networks. Dynamic routing protocols are used in public and private networks. 
+1.	Interior gateway routing protocol.
+2.	Exterior gateway routing protocol.
+INERIOR GATEWAY ROUTING PROTOCOL:
+ The protocols which are used with in a local area network or with in autonomous system. Rip, OPSF, EIGRP, IS-IS are the protocols used in interior gateway protocol. 
+ EXTERIOR GATEWAY ROUTING PROTOCOL:
+The protocols which are used between Autonomous systems are known as EGRP. Boarder gateway routing protocol belongs to EGRP. This protocol is only one protocol used in public networks for transmission of packets between Wide area networks.
+ DISTANCE VECTOR ROUTING PROTOCOL:
+Distance vector routing algorithm is known as Bellman-Ford-Algorithm developed, 1957 and also known as Ford-Fulkerson algorithm, 1962. It was used in ARPANET. It uses User Datagram Protocol and port no 520 to route updates. It is a Class full routing protocol all the subnet masks should be identical as per class A, B C. Routers using RIP protocol send complete routing table as an update in which they contain maximum number of 25 routes per update this requires more bandwidth and more memory to store updates. Rip updates are periodically broadcasted using IP address 255.255.255.255. By using distance vector routing algorithm router can route a packet until hop count of 15hops if it more than 16 hops away it drops the packet as unreachable. And the administrative distance is120. Routers using distance vector routing protocol won’t have any idea about their network topology, it knows only about the outbound interface of router and next hop IP address and it metric which tells how many routers it has to pass to reach the destination. Rip Performs automatic summarization, if any router having with different class full network/subnet mask will be changed and altered to class full network Network/subnet mask. Rip does not support VLSM; all network masks must be identical or same. If there is any link failure in the network it takes long time to invalid that router and it takes long time for choosing best path for routing packets. This causes two problems counting to infinity and routing loops are formed. These way routers are too slow to converge. Rip requires less CPU and RAM as compared to Open shortest path first protocol. Rip protocol normally used in small networks. To overcome this problem RIP V 2 and OSPF, EIGRP protocols are used in medium and large networks. By using OSPF protocol we can overcome this problem they are very faster in choosing the best path if there is any link failure in the network. Distance vector routing algorithm uses timers to maintain their presence and updating routing table.
+
+ NAME OF TIMER	  SECONDS
+   Update timer	   30 seconds
+    Invalid timer	   180 seconds
+   Flush timer	   240 seconds
+                                                  
+Routers using distance vector routing protocols send consecutive updates for every 30 seconds, by this way routers updates their routing table and maintains their presence with connected networks. It the router in the network goes down or link fails or if a router didn’t hear any update from its neighboring router it waits until 180 seconds. If it didn’t receive any update for this time period then the route is marked as unreachable. After 240 seconds time after the route is removed from the routing table as invalid route. The two main drawbacks of using distance vector routing algorithm are bandwidth is not taken in to consideration instead it uses hop count as it’s metric to reach destination. If any links goes down or failed it takes a long time to recover and it causes routing loops and counting to infinity. It takes more time to converge and it won’t verify its updates received from neighboring routers.
+LINK STATE ROUTING PROTOCOL:
+Distance vector routing protocol was used in the ARPANET until 1979 and it was replaced by Link state routing algorithm because of two major problems. In those days the bandwidth used was 56kbps at this time Distance vector routing algorithm was majorly used in internet after upgrading bandwidth to 1.5mbps RIP not taking bandwidth into consideration was a major drawback for distance vector routing protocol. This made to replace to link state routing algorithm and second problem was if any link got failed or goes down it takes long time to choose alternate path and this was overcome by link state routing algorithm.
+                                        Link state routing protocol is an interior gateway routing protocol and it is faster than Distance vector routing protocol. LSRP is developed for IP base internetworks. Links state routing protocol uses DIJKSTRA’S algorithm for calculating shortest paths and it also known shortest path first protocol. It knows complete topology information and diagram about its connected Autonomous system. An autonomous system is group of routers connected    in network for exchanging information, whereas distance vector routing protocol knows about only directly connected routers interface IP address information. After routers gets ON its sends HELLO packets to all OSPF enabled interface routers, if certain parameters in HELLO packets are matched between routers like area id, HELLO and DEAD intervals they form adjacency between them. After forming adjacency they transfer link state advertisement for every 30 seconds. By transferring Link state advertisements each router maintains three tables they are neighbor table, Database table, routing table. After storing all link state advertisements in their databases then they are flooded to all OSPF enabled interfaces. Here interface is state of link of router. By this way each router maintains same network topology in their databases. By knowing all information Link state routing protocol calculates shortest paths. If there is a link failure in the network, routers chooses alternate path to route packets to transfer. It is faster routing protocol to converge if there are any link failures. It is a classless routing protocol it sends information about subnets masks in its updates. They are some disadvantages by using link state routing protocol it is more complex routing protocol and it requires more memory and CPU processing.
+ NAME OF TIMER	SECONDS
+HELLO PACKETS 	10 seconds
+ DEAD INTERVAL	 40 seconds
+                                      
+Hello packets are transferred between routers for every 10 seconds and if there any link failure and interface goes down in waits for forty seconds dead interval time and If any router in network finds that its connected neighbor’s interface is down it informs this information to designated router through 244.0.0.6 and designated informs about this failure information to all routers through 244.0.0.05. By these way routers comes to know about the information about any additional routers information or any link failures in the networks. After exchanging LSA’s routers contains new topology diagram in their databases.
+In this comparison of distance vector routing protocol and link state routing protocols, Mesh, Star, Ring topologies are used with different size of networks topologies.
+3 MESH TOPOLOGY:
+
+In mesh topology every node is got connected to multiple nodes. Each node in the network receives and transfers data received. But each node in the network gets connected to other nodes. 
+Implement and maintain because it requires more maintenance and hardware is required set up this kind of network. This type of topology networks are widely used in wireless networks
+There are two types of mesh topologies are used:
+1.	Fully mesh topology
+2.	 Partial mesh topology
+
+ 
+
+
+FULLY MESH TOPOLOGY:
+
+Full mesh topologies are like every node in the network is connected to other node in the network. This type of network costs more money to implement, but if there is any link failure in the network traffic will be rerouted to alternative paths. Fully mesh topologies normally used for backbone networks.
+PARTIAL MESH TOPOLOGY:
+
+This kind of networks costs bit less compared to fully mesh topologies. In these topologies few devices are connected to one or two in the network and rest of nodes are in fully mesh. This kind of networks is connected to fully mesh backbone networks.
+ADVANTAGES:
+
+1.	If there is any link failure in the network traffic can be rerouted by alternative path.
+2.	In this kind of networks high traffic can be splitted.
+3.	Any additional and if any changes in the network can be done without any interruption to others node in the topology.
+DIS-ADVANTAGES:
+
+1.	It is very expensive to implement because it requires more hardware and cables to setup the network.
+2.	Network maintenance will be required more in number.
+
+
+OPNET MODELLER:
+
+To satisfy above requirements optimized network engineering tool (OPNET) software from OPNET technology research and development was introduced that how to operate network equipment, network protocol, application and server. Opnet modeler graphical user interface makes it user friendly and makes users more flexible learning with it. Users can compare the simulated networks to compare the impact of different designs. This software can be flexibly used to know about communication networks, devices, protocols with graphical support. OPNET is used for three main functions, designing, modeling and simulation.
+SMALL MESH TOPOLOGY:   
+Distance vector routing protocol and link state routing protocol are tested in Small mesh network topology. This topology is shown in the figure below, for designing this small network in Opnet modeler, six ethernet4_slip8_gateway routers are used to design this network topology and for connecting this routers PPP_DS3 links are used. To know more about distance vector routing protocol and link state routing protocol how it works. When there is no failure and if there is any link failure in the network how much time it takes to recover from the failure, are observed to know which protocol is suitable for small mesh network topology.
+There are two scenarios in small mesh:
+Small mesh without failure.
+
+ 
+
+
+    Small mesh with failure.
+ 
+
+ MEDIUM MESH TOPOLOGY:   
+Distance vector routing protocol and link state routing protocol are tested in Medium mesh network topology. This topology is shown in the figure below, for designing this Medium network in Opnet modeler, twenty four ethernet4_slip8_gateway routers are used to design this network topology and for connecting this routers PPP_DS3 links are used. To know more about distance vector routing protocol and link state routing protocol how it works when there is no failure and if there is any link failure in the network how much time it takes to recover from the failure, are observed to know which protocol is suitable for medium mesh network topology.
+There are two scenarios in medium mesh:
+
+
+Medium mesh without failure 
+ 
+
+
+Medium mesh with failure
+  
+
+LARGE MESH TOPOLOGY:
+
+Distance vector routing protocol and link state routing protocol are tested in large mesh network topology. This topology is shown in the figure below, for designing this large network in Opnet modeler, sixty seven ethernet4_slip8_gateway routers are used to design this network topology and for connecting this routers PPP_DS3 links are used. To know more about distance vector routing protocol and link state routing protocol how it works when there is no failure and if there is any link failure in the network how much time it takes to recover from the failure, are observed to know which protocol is suitable for Large mesh network topology.
+There are two scenarios in large mesh:
+
+Large mesh without failure:
+ 
+
+
+Large mesh with failure:
+
+ 
+The reason for using three different size of mesh topologies are to know about which protocol is suitable for these mesh topologies. In mesh topology there are many redundant paths available, if there is any link failure it chooses alternate path. So in order to know about in different sizes small, medium, large size networks how this distance vector routing protocol and link state routing protocols behave. So, these network topologies are designed and tested in order to know which protocol is best and if there is any link failure in the network which protocol converges very fast are taken in to consideration for choosing best protocol for specific network topology.
+After comparing these two protocols in small, medium, large mesh networks the results are obtained below in rip and ospf.
+4 RESULTS:
+It is always interesting to know how a network is performing and often that can be known by its convergence times because that tells how efficient the network in terms of adopting to changes. In this project failure is set to 100 seconds for all ten scenarios and for recovery form 110 seconds to 200 seconds for every 10seconds the simulation results are collected.
+RIP MESH SMALL:
+ 
+
+In the above obtained results are plotted in graph to know about rip protocol in small mesh networks. Rip protocol in small mesh network it takes less time 2.45 seconds to discover its directly connected routers. When the link is failed between R1 and R6 at 100seconds it took 7seconds to update its routing table and to inform to its neighbor about the failure in the network and when the link is recover or added back it took 17.5seconds because routers exchange the complete routing table with directly connected routers in the network and for different simulations failure time 0.4 seconds which is very less time to know about failure in the network and recover time is 3.5 seconds.  Recovery time at 110, 120, and 140 is quite high compared to different recovery time. So when the rip protocol configured routers are on it takes very less time to know about its directly connected routers. When the link is failed between r1 and r6 it chooses alternate path R2, R3, R4, R5 and recovery time it takes less time to update or choosing alternate path except in two to three different intervals.
+
+RIP MESH MEDIUM:
+  
+Compared to rip mesh small network topology, medium topology takes little more time of 8.4seconds to discover its directly connected networks. As size of the network is bigger than small topology it takes more time. When the link is failed between R13 and R14 at 100seconds and recovered at different time intervals duration network convergence duration at 110 is 7seconds and at 130 it took 27seconds to know about the failure. Recovery time at 120 and 150 is less and at 110, 130, 140 it is high. From 160seconds to 200seconds failure time is 27seconds time and recovery time is zero as routers chosen the alternate paths as in mesh network there are many alternate paths to router packets.
+RIP MESH LARGE:
+ 
+In mesh large network topology, as the network is connected with many numbers of routers, network convergence time to discover its directly connected routers is 20.4seconds. Link between R33 and R45 is failed. At 140 and 150seconds network convergence time taken to know about failure and to recover from failure taken is 37seconds and 30seconds and at 160 to 200seconds failure time 27seconds. When the link is recovered at different intervals it take long time at 130time interval about 26seconds to recover and at 160 to 200seconds routers took zero seconds because routers got better alternate path as compared to before so when the link is added back it ignore the link because it go may got better link to route.
+If the network size is small then network convergence time takes to know about its directly connected router time is less and failure and recovery time is also small if the network is smaller and if the network is bigger in size it takes some time to converge network from failure and recovery.
+OSPF SMALL MESH:
+ 
+Routers configured with ospf protocol when routers turned on it sends LSA packets to ospf enabled interfaces and each router maintains network topology  in their database. In small mesh ospf it took 27.6 seconds to know about its network topology. Compared to rip ospf takes more time to know about its network topology. When the link is failed between router 1 and router 6 at 100 seconds it converges faster compared to rip, it take 10seconds to update its routing table about link failure and sends LSA packet to its adjacent router about the change and when network is recovered at 110 to 160 seconds it takes 15 seconds to converge network from recovery and inform to its adjacent router regarding change in network.
+
+OSPF MEDIUM MESH:
+In the above graph for OSPF small mesh network using OSPF, it exchanges LSA packets between adjacent routers and this protocol takes long time to converge network as it maintains complete network diagram in its database. It takes long time compared to rip. For converge network it take 29.84 seconds. When the link is failed between router 13 and router 14 at 100 seconds it converges faster compared to rip, it take 10seconds to update its routing table about link failure and sends LSA packet to its adjacent router about the change and when network is recovered at 110 to 160 seconds it take 15 seconds to converge network from recovery and inform to its adjacent router regarding change in network. And from 170 to 200seconds routers find alternate path so recovery time is zero.
+
+ 
+
+OSPF LARGE MESH:
+
+ 
+
+In the above graph for OSPF small mesh network using OSPF, it exchanges LSA packets between adjacent routers and this protocol takes long time to converge network as it maintains complete network diagram in its database. It takes long time compared to rip. For converge network it take 29.62 seconds. When the link is failed between router 33 and router 46 at 100 seconds it converges faster compared to rip, it take 10seconds to update its routing table about link failure and sends LSA packet to its adjacent router about the change and when network is recovered at 110 to 160 seconds it take 15 seconds to converge network from recovery and inform to its adjacent router regarding change in network. And from 170 to 200seconds routers find alternate path so recovery time is zero.
+
+5 COMPARISON OF RIP AND OSPF:
+MESH SMALL
+ 
+In terms of convergence and routing updates when there is no failure in the network it is observed that Ospf takes longer to converge and the difference is 25 seconds. As Ospf is a link state protocol it maps out network terminology from each router that can be the reason for extra time but once it it converges it adapts to any changes/failure quicker than RIP as seen in above graph. When there is a failure and recovery in the network ospf takes little time to converge. Rip failure time at 130 to 200 seconds ospf takes more time compared to rip. For recovery time rip takes less time to recover from the network.
+MESH MEDIUM
+ 
+when there is no failure in the network it is observed that Ospf takes longer to converge and the difference is 22 seconds. As ospf protocol exchanges LSA’s with neighbors for every 10seconds this makes ospf routers maintain complete map in their databases. After link failure ospf takes less time 5seconds to convergeg network. When link is recoverd it adds with in 15seconds as compared to rip. In medium topology ospf takes very less time compared to rip, at 130 to 200 seconds failure time is less compared to rip and for recovey rip takes more time at 130seconds time compared to ospf.
+ MESH LARGE
+ 
+Ospf takes longer time to converge at startup and the difference is 10 seconds compared to rip. And when there is failure ospf perfoms faster than rip with in 5seconds. When the link is added back the recovery time is 15seconds compared to rip. Failure time is less for ospf at 110 to 200 seconds but rip takes more time especially at 140 seconds rip takes more time.when link is added back recovery time is more at 110 and 130seconds to rip but ospf takes lees time compared to ospf. Failure time at 140seconds rip takes 38seconds of time where as ospf takes very less time about 5seconds at 120seconds ospf takes 19seconds. For recovery ospf takes less time but rip takes more time at 130seconds.
+6 CONCLUSION:
+Considering bandwidth, delay, it is clearly observed that Routing information protocol can be used for small networks. Compared to Open shortest path first protocol, RIP takes less time to discover its directly connected routers and it won’t require more bandwidth and memory to store. Rip protocol is best to use in network where delay is not much of a problem. When the protocol is on Rip protocol takes less time to know about its directly connected routers.
+Ospf is much better than RIP if it used in medium and large enterprise networks. Ospf protocol keep complete topology diagram in its database so by using this protocol it knows the routers connected in its local area network. After simulation in mesh topology if there is any link failure in the network it takes less time to choose alternate path, when the link is recovered or added back to the network it takes less time to update its routing tables. Ospf  is best to use in big network as it takes less time to converge from failure. In order to recover from failure rip protocol has to be configured with triggered updates if there is any link failure in the network by this rip protocol can be used in small and medium networks.
+The main disadvantage of using distance vector routing protocol is it is too slow to converge the network when there is failure in the network it creates two problem routing loops and counting to infinity and by using link state routing protocol is takes a lot of time to know about its network topology it requires more CPU and memory to store and it is used mainly in medium and large networks. To know more about these protocols they are tested in different network designs to know which protocol is suitable for particular network
+7 REFERENCES:
+Martin W. Murhammer, Kok-keong lee, Payam motallebi, Palo Borghi, Karl wozabal. (1999). IP network design.
+Graziani, R and Johnson, A. (2007) .Routing protocol and concepts, CCNA Exploration Companion Guide. Indianapolis: Cisco Press.
+ Pun, Hubert. (1998).Convergence behaviour of RIP and Ospf Network protocols (MSc    Thesis), University of British Columbia, British Columbia. 
+A.S.Seth, V.Y.Hantyshin, “opnet user guide for practical computer network simulation”
+M. Goyal, M. Soperi, E. Baccelli, G. Choudhury, A. Shaikh, H. Hosseini, and K. Trivedi.Improving Convergence Speed and Scalability in OSPF: A Survey.
+ J. Moy, “OSPF version 2,” Internet Engineering Task Force, Request For Comments                                                                                                    RFC 2328, April 1998.
+M. Goyal, K. Ramakrishnan, and W. Feng, “Achieving faster failure detection in OSPF networks,” in Proc. IEEE International Conference on Communications (ICC 2003)
+A. Medem, R. Teixeira, N. Feamster, and M. Meulle, “Determining the causes of intra domain routing changes,” University Pierre and Marie Curie,” Technical Report, 2009, http://www-rp.lip6.fr/ medem/inmworkshop tech report.pdf.
+EIGRP, OSPF and RIP based on Technical Background Using OPNET Modeler”
+M. Goyal, K. K. Ramakrishnan, W. C. Feng.Achieving Faster Failure Detection in OSPF Networks, Proc. IEEE ICC’03, 2003.
+C. Alaettinoglu, V. Jacobson, and H. Yu. Toward Millisecond IGP Convergence, NANOG 20, October 2000.
+ 
+
+J. Moy, ospf, Anatomy of an internet routing protocol Addison-Wesley Professional, 1998.
+
+A. Shaikh, L. Kalampoukas, R. Dube, and A.Varma. Routing Stability in Congested Networks: Experimentation and Analysis
+G. Lichtwald, U. Walter, M. Zitterbart. Improving Convergence Time of Routing Protocols. Proceedings of IEEE International conference on networking, 2004.
+
+T. Thomas, OSPF Network Design Solutions, Second Edition. CiscoPress, 2003.
+Sheela Ganesh Thorenoor Consultant, Wipro Technologies, “Dynamic Routing Protocol implementation decision between  
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
